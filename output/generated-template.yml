@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A hello world application.
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      CodeUri: s3://8586-terraform-state/bc8716c3c56f49ef297f62707af737c6
+      Description: Lambda for Hello world
+      MemorySize: 128
+      Events:
+        HelloWorldAPI:
+          Type: Api
+          Properties:
+            Path: /app
+            Method: GET
